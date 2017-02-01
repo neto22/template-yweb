@@ -1,6 +1,7 @@
 {
     "name": "template-yweb",
     "description": "template-yweb",
+    "templateId": "5891f3132e8d613ddddc07ef",
     "version": "1.0.0",
     "templatesImports": {
         "index": [
