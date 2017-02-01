@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{{> partial-head}}
+    
+</head>
+<body>
+	{{> partial-header}}
+
+	<div>
+	    <h1>{{group.name}}</h1>
+	    <h2>{{group.title}}</h2>
+	    <p>{{{group.descriptionHtml}}}</p>
+    </div>
+
+    <ul>
+        {{#each group.images}}
+        <li>
+            <img src="//{{this}}?size=400x-" alt="{{../group.name}} Image {{@index}}" />
+        </li>
+        {{/each}}
+    </ul>
+    
+	<div>
+	    <h2>{{group.productsTitle}}</h2>
+	    <p>{{{group.productsDescriptionHtml}}}</p>
+
+		{{#if groupProductsHighlights}}
+		<div>
+		<ul>
+		{{#each groupProductsHighlights}}
+		<li><a href="{{helper_uri_product this}}">{{name}}</a> - {{{descriptionHtml}}}</li>
+		{{/each}}
+		</ul>
+		</div>
+		{{/if}}
+
+		{{#if groupProducts}}
+		<div>
+		<ul>
+		{{#each groupProducts.content}}
+		<li><a href="{{helper_uri_product this}}">{{name}}</a> - {{{descriptionHtml}}}</li>
+		{{/each}}
+		</ul>
+		</div>
+		{{/if}}
+
+    </div>
+
+	<div>
+	    <h2>{{group.groupsTitle}}</h2>
+	    <p>{{{group.servicesDescriptionHtml}}}</p>
+
+		{{#if groupServicesHighlights}}
+		<div>
+		<ul>
+		{{#each groupServicesHighlights}}
+		<li><a href="{{helper_uri_service this}}">{{name}}</a> - {{{descriptionHtml}}}</li>
+		{{/each}}
+		</ul>
+		</div>
+		{{/if}}
+
+		{{#if groupServices}}
+		<div>
+		<ul>
+		{{#each groupServices.content}}
+		<li><a href="{{helper_uri_service this}}">{{name}}</a> - {{{descriptionHtml}}}</li>
+		{{/each}}
+		</ul>
+		</div>
+		{{/if}}
+
+    </div>
+
+	<div>
+	    <h2>{{group.portfoliosTitle}}</h2>
+	    <p>{{{group.portfoliosDescriptionHtml}}}</p>
+
+		{{#if groupPortfoliosHighlights}}
+		<div>
+		<ul>
+		{{#each groupPortfoliosHighlights}}
+		<li><a href="{{helper_uri_portfolio this}}">{{name}}</a> - {{{descriptionHtml}}}</li>
+		{{/each}}
+		</ul>
+		</div>
+		{{/if}}
+
+		{{#if groupPortfolios}}
+		<div>
+		<ul>
+		{{#each groupPortfolios.content}}
+		<li><a href="{{helper_uri_portfolio this}}">{{name}}</a> - {{{descriptionHtml}}}</li>
+		{{/each}}
+		</ul>
+		</div>
+		{{/if}}
+
+    </div>
+
+
+	{{> partial-footer}}
+</body>
+</html>

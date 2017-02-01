@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{{> partial-head}} 
+    <title></title>
+</head>
+<body>
+	{{> partial-header}}
+
+	<div>
+	    <h1>{{business.card.name}}</h1>
+	    <h2>{{business.card.slogan}}</h2>
+	    <p>{{{business.card.descriptionHtml}}}</p>
+    </div>
+
+	<div>
+	    <p>{{{business.card.corporateMessageHtml}}}</p>
+    </div>
+
+	{{> partial-footer}}
+</body>
+</html>

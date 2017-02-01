@@ -1,0 +1,49 @@
+<footer>
+    
+    {{#if business.primaryAddress}}
+    <div class="address clearfix" itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
+        <div>
+            <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" class="break-word">
+                {{#if description}}({{description}}){{/if}} {{business.primaryAddress.formattedAddress}}
+                <meta itemprop="streetAddress" content="{{business.primaryAddress.streetName}}">
+                <meta itemprop="postalCode" content="{{business.primaryAddress.postalCode}}">
+                <meta itemprop="addressCountry" content="{{business.primaryAddress.country}}">
+                <meta itemprop="addressRegion" content="{{business.primaryAddress.city}}">
+            </div>
+        </div>
+        <div>
+            <meta itemprop="latitude" content="{{business.primaryAddress.coordinates.latitude}}" />
+            <meta itemprop="longitude" content="{{business.primaryAddress.coordinates.longitude}}" />
+            <div class="map-static" style="background-image: url('https://maps.googleapis.com/maps/api/staticmap?center={{business.primaryAddress.coordinates.latitude}},{{business.primaryAddress.coordinates.longitude}}&zoom=16&size=1200x2200');">
+                <a class="action-button" target="_blank" href="//www.google.com/maps/place/{{business.primaryAddress.coordinates.latitude}},{{business.primaryAddress.coordinates.longitude}}">
+                    Ver no mapa
+                </a>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    
+    {{#if business.contacts}}
+    <h5>Contactos</h5>
+    <ul class="contacts-list">
+        {{#each business.contacts}}
+        <li class="contact-item">
+            <a href="{{helper_contact_action type}}{{helper_rws value}}">
+                <span itemprop="{{helper_contact_itemprop type}}">{{value}} - {{helper_toLowerCase type.type}}</span>
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+    {{/if}}
+
+    {{#if business.card.socialLinks}}
+    <h5>Social</h5>
+    {{#each business.card.socialLinks}}
+    <a href="{{value}}" target="_blank" class="{{type.iconClass}}" itemprop="sameAs">{{type.name}} - {{type.iconClass}}</a>
+    {{/each}}
+    {{/if}}
+
+    <div class="with-max-width"><a href="https://www.yellowmedia.pt" target="_blank">Copyright © {{business.card.name}} - Powered by Yellow Media</a></div>
+</footer>
+
+<script src="./script.js"></script>

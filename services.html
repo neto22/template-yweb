@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{{> partial-head}}
+    <title></title>
+</head>
+<body>
+{{> partial-header}}
+
+	<div>
+		<h2>{{business.servicesTitle}}</h2>
+		<p>{{{business.servicesDescriptionHtml}}}</p>
+    </div>
+
+	{{#if services}}
+	<div>
+	<ul>
+	{{#each services}}
+	<li><a href="{{helper_uri_service this}}">{{name}}</a> - {{{descriptionHtml}}}</li>
+	{{/each}}
+	</ul>
+	</div>
+	{{/if}}
+
+{{> partial-footer}}
+</body>
+</html>

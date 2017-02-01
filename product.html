@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{{> partial-head}}
+    
+</head>
+<body>
+	{{> partial-header}}
+
+	<div>
+	    <h1>{{product.name}}</h1>
+	    <p>{{{product.descriptionHtml}}}</p>
+    </div>
+    
+    <ul>
+        {{#each product.images}} 
+        <li>
+        <img src="//{{this}}?size=400x-" alt="{{../product.name}} Image {{@index}}"/>
+        </li>
+        {{/each}} 
+    </ul>
+
+	{{> partial-footer}}
+</body>
+</html>

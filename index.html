@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {{> partial-head}}
+</head>
+
+<body>
+
+    {{> partial-header}}
+
+    <header {{#helper_at business.card.profileImages 0}}style="background-image: url('//{{this}}?size=400x-');"{{/helper_at}}>
+        <h1>{{business.card.name}}</h1>
+        <h2>{{business.card.slogan}}</h2>
+        <div class="description">{{{business.card.descriptionHtml}}}</div>
+    </header>
+
+    <main>
+
+        <!-- Portfolios Highlights -->
+        {{#if portfoliosHighlights}}
+        <section>
+            <h2 class="section-title">{{business.portfoliosTitle}}</h2>
+            <div class="description">{{{business.portfoliosDescriptionHtml}}}</div>
+            <ul>
+                {{#each portfoliosHighlights}}
+                <li class="list-item">
+                    
+                    <aside>
+                        <img {{#helper_at images 0}}src="//{{this}}?size=400x-"{{/helper_at}} alt="{{name}} Image"/>
+                    </aside>
+                    
+                    <article>
+                        <h4>{{name}}</h4>
+                        <label>{{#if item.publicationDate}}{{helper_format_date item.publicationDateISO}}{{/if}}</label>
+                        <div>
+                            {{{descriptionHtml}}}
+                        </div>
+                        <a href="{{helper_uri_portfolio this}}">Saber Mais...</a>
+                    </article>
+                </li>
+                {{/each}}
+            </ul>
+        </section>
+        {{/if}}
+
+        <!-- Products Highlights -->
+        {{#if productsHighlights}}
+        <section>
+            <h2 class="section-title">{{business.productsTitle}}</h2>
+            <div class="description">{{{business.productsDescriptionHtml}}}</div>
+            <ul>
+                {{#each productsHighlights}}
+                <li class="list-item">
+                    <a href="{{helper_uri_product this}}">{{name}}</a>
+                    
+                    {{{descriptionHtml}}}
+                    
+                    {{#if pricing.price}}
+                    <div class="price">
+                       {{#if pricing.previousPrice}}
+                       <span class="previous-price">{{formatCurrency pricing.previousPrice locale=(helper_locale localizationSettings)}}</span>
+                       {{/if}}
+                       <span>{{formatCurrency pricing.price locale=(helper_locale localizationSettings)}}</span>
+                    </div>
+                   {{/if}}
+                </li>
+                {{/each}}
+            </ul>
+        </section>
+        {{/if}}
+
+        <!-- Services Highlights -->
+        {{#if servicesHighlights}}
+        <section>
+            <h2 class="section-title">{{business.servicesTitle}}</h2>
+            <div class="description">{{{business.servicesDescriptionHtml}}}</div>
+            <ul>
+                {{#each servicesHighlights}}
+                <li class="list-item"><a href="{{helper_uri_service this}}">{{name}}</a>{{{descriptionHtml}}}</li>
+                {{/each}}
+            </ul>
+        </section>
+        {{/if}}
+
+        <!-- Navigation Groups Highlights -->
+        {{#if navigationGroupsHighlights}}
+        <section>
+            <ul>
+                {{#each servicesHighlights}}
+                    <li class="list-item"><a href="{{helper_uri_group this}}">{{name}}</a>{{{descriptionHtml}}}</li>
+                {{/each}}
+            </ul>
+        </section>
+        {{/if}}
+        
+    </main>
+
+    {{> partial-footer}}
+</body>
+
+</html>

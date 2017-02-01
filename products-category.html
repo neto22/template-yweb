@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{{> partial-head}}
+    
+</head>
+<body>
+{{> partial-header}}
+
+	<div>
+	    <h1>{{category.name}}</h1>
+		<h2>{{business.productsTitle}}</h2>
+		<p>{{{business.productsDescriptionHtml}}}</p>
+    </div>
+
+	{{#if products}}
+	<div>
+	<ul>
+	{{#each products}}
+	<li><a href="{{helper_uri_product this}}">{{name}}</a> - {{{descriptionHtml}}}</li>
+	{{/each}}
+	</ul>
+	</div>
+	{{/if}}
+
+{{> partial-footer}}
+</body>
+</html>

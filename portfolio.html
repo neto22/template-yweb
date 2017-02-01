@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{{> partial-head}}
+    
+</head>
+<body>
+	{{> partial-header}}
+
+	<div>
+	    <h1>{{portfolio.name}}</h1>
+	    <h2>{{portfolio.publicationDateISO}}</h2>
+	    <p>{{{portfolio.descriptionHtml}}}</p>
+    </div>
+
+    <ul>
+        {{#each portfolio.images}}
+        <li>
+            <img src="//{{this}}?size=400x-" alt="{{../portfolio.name}} Image {{@index}}" />
+        </li>
+        {{/each}}
+    </ul>
+
+    {{#if portfolio.primaryCategory}}
+	<div>
+    	<a href="{{helper_uri_portfolio_category portfolio.primaryCategory}}">{{portfolio.primaryCategory.name}}</a>
+    </div>
+    {{/if}}
+
+	{{> partial-footer}}
+</body>
+</html>

@@ -1,0 +1,21 @@
+<nav class="main-header">
+    <img class="logo" src="//{{business.card.logo}}?size=-x120"/>  
+    <ul> 
+    	<li><a href="./">Home</a></li>
+    	{{#if portfoliosCategoriesHighlights}}
+    	{{#each portfoliosCategoriesHighlights}}
+    	<li><a href="{{helper_uri_portfolio_category this}}">{{name}}</a></li>
+    	{{/each}}
+    	{{/if}}
+    	{{#if navigationGroups}}
+    	{{#each navigationGroups}}
+    	{{#if navExternal}}
+    	<li><a href="{{navUrl}}" target="_blank">{{navLabel}}</a></li>
+    	{{else}}
+    	<li><a href="{{helper_uri_group this}}">{{navLabel}}</a></li>
+    	{{/if}}
+    	{{/each}}
+    	{{/if}}
+    	<li><a href="./about">About Us</a></li>
+    </ul>
+</nav>

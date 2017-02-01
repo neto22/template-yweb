@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{{> partial-head}}
+    
+</head>
+<body>
+	{{> partial-header}}
+
+	<div>
+	    <h1>{{service.name}}</h1>
+	    <p>{{{service.descriptionHtml}}}</p>
+    </div>
+
+    <ul>
+        {{#each service.images}}
+        <li>
+            <img src="//{{this}}?size=400x-" alt="{{../service.name}} Image {{@index}}" />
+        </li>
+        {{/each}}
+    </ul>
+
+    {{#if service.primaryCategory}}
+	<div>
+    	<a href="{{helper_uri_service_category service.primaryCategory}}">{{service.primaryCategory.name}}</a>
+    </div>
+    {{/if}}
+
+	{{> partial-footer}}
+</body>
+</html>
